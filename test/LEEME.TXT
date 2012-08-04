@@ -1,0 +1,108 @@
+-----------------------------------------------------------------------------------
+		                   INTRO
+-----------------------------------------------------------------------------------
+
+Esta carpeta contiene la definicion, scripts y programas utilizados para las pruebas del 2do recuperatorio del trabajo practico de sistemas operativos, universidad tecnologica nacional, facultad regional buenos aires.
+
+Los pasos basicos para empezar a usar las pruebas son:
+
+- Ejecutar el script ./init-disks.sh
+- Esperar un rato (1 min. aprox)
+- Realizar las pruebas descriptas en el documento ubicado en la carpeta "doc"
+
+
+Nota: todos los scripts proveen una breve indicacion de uso si son ejecutados sin parametros (a excepcion de uno, que no recibe parametros!)
+-----------------------------------------------------------------------------------
+
+
+
+
+
+
+-----------------------------------------------------------------------------------
+		       COMPILACION DE LOS PROGRAMAS .C
+-----------------------------------------------------------------------------------
+Compilacion del conc-file-creator:
+
+gcc conc-file-creator.c -o conc-file-creator -lpthread -lcrypto
+
+Nota: podria ser necesario instalar los siguientes paquetes:
+- openSSL: apt-get install openssl
+- libSSL: apt-get install libssl-dev
+-----------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------
+Compilacion de los clientes de memcached:
+
+Ejemplo mget.c:
+
+gcc mget.c -o mget -lmemcached
+-----------------------------------------------------------------------------------
+
+
+
+-----------------------------------------------------------------------------------
+               DESCRIPCION DEL CONTENIDO DE ESTE DIRECTORIO
+-----------------------------------------------------------------------------------
+
+check-free-blocks-and-inodes.sh: Consulta los inodos y bloques libres del device indicado
+
+conc-file-creator: crea una cantidad limitada de archivos con hilos concurrentes y contenido aleatorio, validando el resultado.
+
+conc-file-creator.c: fuente del archivo previo
+conc-file-creator.h: cabecera del archivo previo
+
+conc-file-reader.sh: crea una cantidad limitada de procesos que leeran con md5sum de manera concurrente un mismo archivo
+
+create-big-data-file.sh: crea un archivo de datos grande (mayor a 10 MiB) rapidamente
+
+create-data-file.sh: crea un archivo de datos (chars, binario aleatorio o zeros) del tamanio especificado
+
+create-empty-files.sh: crea una cantidad limitada de archivos vacios en un directorio dado
+
+disks: carpeta con los discos generados por el script de creacion de discos
+
+doc: documentos con las pruebas
+
+engine: un engine de pruebas de memcached
+
+file-reader.sh: lee un archivo X veces mediante md5sum
+
+hit-memcached.sh: crea una cantidad limitada de procesos que se encargan de operar con memcached concurrentemente
+
+init-disks.sh: crea los discos a ser utilizados en las pruebas
+
+LEEME.TXT: este archivo!
+
+mdelete.sh: borra una clave de memcached
+
+mflush_forced.sh: borra toda la cache de memcached sin pedir confirmacion
+
+mflush.sh: borra toda la cache de memcached pidiendo confirmacion
+
+mget: obtiene el valor de una clave en memcached
+
+mget.c: fuente del archivo anterior
+
+mget_to_file: obtiene el valor de una clave salvandolo en el archivo dado
+
+mget_to_file.c: fuente del archivo anterior
+
+mnt: carpeta donde el script de iniciacion monta los discos
+
+mset: guarda un valor en memcached bajo la clave dada
+
+mset.c: fuente del archivo anterior
+
+mset_from_file: guarda un valor en memcached, leido de un archivo, en la clave dada
+
+mset_from_file.c: fuente del archivo anterior
+
+operate-with-memcached.sh: opera con memcached almacenando, consultando y borrando una cantidad limitada de veces valores.
+
+utilarg.c: algunas funciones reutilizadas tal vez
+
+util_char.sh: algunas funciones reutilizadas, tal vez
+
+write-data-to-file.sh: escrite un conjunto de bytes en un archivo desde el offset indicado
+
